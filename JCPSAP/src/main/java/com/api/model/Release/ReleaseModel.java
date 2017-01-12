@@ -1,4 +1,4 @@
-package com.sapient.model.Release;
+package com.api.model.Release;
 
 import java.util.Date;
 import java.util.List;

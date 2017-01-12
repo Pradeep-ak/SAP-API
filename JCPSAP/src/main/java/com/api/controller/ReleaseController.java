@@ -1,4 +1,4 @@
-package com.sapient.controller;
+package com.api.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.model.Release.ReleaseModel;
+import com.api.model.Release.ReleaseModel;
 
 @RestController
 @RequestMapping("/release")
@@ -23,7 +23,7 @@ public class ReleaseController {
     @ResponseBody
 	public List<ReleaseModel> index() {
 		loadConfig();
-		return new ArrayList<>(releaseMap.values());
+		return new ArrayList<ReleaseModel>(releaseMap.values());
 	}
 	
 	@RequestMapping("/{id}")
