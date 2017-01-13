@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>JCPSAP</groupId>
-  <artifactId>JCPSAP</artifactId>
+  <groupId>Internal</groupId>
+  <artifactId>Internal</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>SAPAPI</name>
+  <name>Internal</name>
   
-  
+  <packaging>war</packaging>
    <!-- Inherit defaults from Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -13,21 +14,44 @@
         <version>1.2.5.RELEASE</version>
     </parent>
 
+	<properties>        
+	    <start-class>com.api.Application</start-class>
+	</properties>
+	
     <dependencies>  
-        <!-- Get the dependencies of a web application -->
-        <dependency>
+        <!-- Get the dependencies of a standalone application -->
+        <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
+        </dependency> -->
+        <!-- <dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-tomcat</artifactId>
 		    <scope>provided</scope>
+		</dependency> -->
+		
+		<!-- Get the dependencies of a web application -->
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-web</artifactId>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.springframework.boot</groupId>
+		            <artifactId>spring-boot-starter-tomcat</artifactId>
+		        </exclusion>
+		    </exclusions>
 		</dependency>
+		<dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>       
     </dependencies>
 	
     <build>
-        <plugins>
+    	<finalName>api</finalName>
+    	<!-- Get the dependencies of a standalone application -->
+        <!-- <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -36,6 +60,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-        </plugins>
+        </plugins> -->
     </build>
 </project>
