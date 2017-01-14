@@ -1,33 +1,35 @@
 package com.api.cassandra.bean;
 
+import java.util.Date;
+
 import org.springframework.cassandra.core.PrimaryKeyType;
 import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.mapping.Table;
 
-@Table(value = "team")
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+@Table(value = "team")
 public class Team {
 
-	
-    @Column(value = "first_name")
-
+	@Column(value = "first_name")
 	private String firstName;
 
-    @Column(value = "first_name")
-
+    @Column(value = "last_name")
     private String lastName;
 	
-    @Column(value = "ph_nb")
-
+    @Column(value = "phone_nb")
     private String phoneNumber;
 
     @PrimaryKeyColumn(name = "email",ordinal = 1,type = PrimaryKeyType.PARTITIONED)
-
     private String emailId;
-    @Column(value = "location")
 
+    @Column(value = "location")
     private String location;
+    
+    @JsonFormat(pattern="MM/dd/yyyy")
+    @Column(value = "change_date")
+    private Date changeDate;
 	
 	public Team() {
 		
@@ -73,5 +75,22 @@ public class Team {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+	public Date getChangeDate() {
+		return this.changeDate;
+	}
+
+	public void setChangeDate(Date changeDate) {
+		this.changeDate = changeDate;
+	}
 	
+	public String print() {
+		return String.format("Team Object firstName=%s, lastName=%s, phoneNumber=%s, emailId=%s, location=%s", 
+				getFirstName(),
+				getLastName(),
+				getPhoneNumber(),
+				getEmailId(),
+				getLocation());
+
+	}
 }
