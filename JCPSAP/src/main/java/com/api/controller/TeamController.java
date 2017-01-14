@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.api.cassandra.bean.Team;
+import com.api.cassandra.repository.TeamRepository;
 import com.api.model.Team.TeamMemberModel;
 
 @Controller
@@ -17,19 +20,27 @@ import com.api.model.Team.TeamMemberModel;
 public class TeamController {
 
 	private Map<String, TeamMemberModel> teamList;
+    @Autowired
+	private TeamRepository teamRepository;
 	
 	@RequestMapping(value="/all")
 	@ResponseBody
-	public List<TeamMemberModel> getTeamMember() {
-		loadConfig();
-		return new ArrayList<TeamMemberModel>(teamList.values());
+	public List<Team> getTeamMember() {
+		List<Team> members = new ArrayList<Team>();
+		System.out.println(teamRepository);
+		teamRepository.findAll().forEach(e->members.add(e));
+		return members;
+        
 	}
 
 	@RequestMapping(value="/member/{id}")
 	@ResponseBody
-	public TeamMemberModel getTeamMember(@PathVariable("id") String id) {
+	public List<Team> getTeamMember(@PathVariable("id") String id) {
 		loadConfig();
-		return teamList.get(id);
+		System.out.println(id);
+		List<Team> members = new ArrayList<Team>();
+		   teamRepository.findByUser(id,2).forEach(e -> members.add(e));
+	        return members;
 	}
 	
 	private void loadConfig() {
