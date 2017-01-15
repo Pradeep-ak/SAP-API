@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(value = "team")
 public class Team {
 
+	@PrimaryKeyColumn(name = "id",ordinal = 1,type = PrimaryKeyType.PARTITIONED)
+	private String id;
+	
 	@Column(value = "first_name")
 	private String firstName;
 
@@ -21,7 +24,7 @@ public class Team {
     @Column(value = "phone_nb")
     private String phoneNumber;
 
-    @PrimaryKeyColumn(name = "email",ordinal = 1,type = PrimaryKeyType.PARTITIONED)
+    @Column(value = "email")
     private String emailId;
 
     @Column(value = "location")
@@ -84,8 +87,17 @@ public class Team {
 		this.changeDate = changeDate;
 	}
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String print() {
-		return String.format("Team Object firstName=%s, lastName=%s, phoneNumber=%s, emailId=%s, location=%s", 
+		return String.format("Team Object id=%s, firstName=%s, lastName=%s, phoneNumber=%s, emailId=%s, location=%s",
+				getId(),
 				getFirstName(),
 				getLastName(),
 				getPhoneNumber(),

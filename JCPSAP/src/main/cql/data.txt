@@ -1,1 +1,10 @@
+
 {"firstName":"Pradeep","lastName":"Kulkarni","phoneNumber":"1234567","emailId":"test@test.com","location":"india"}
+
+/api/team/member/bulk (Post)
+[
+	{"id":"1","firstName":"Pradeep","lastName":"K","phoneNumber":"+14694038507","emailId":"pradeep4jobs@gmail.com","location":"plano"},
+	{"id":"2","firstName":"Harsha","lastName":"M","phoneNumber":"+14694038501","emailId":"harsha@gmail.com","location":"plano"},
+	{"id":"3","firstName":"Naveen","lastName":"G","phoneNumber":"+14694038502","emailId":"naveen@gmail.com","location":"plano"},
+	{"id":"4","firstName":"Jithu","lastName":"M","phoneNumber":"+14694038503","emailId":"jithu@gmail.com","location":"plano"}
+]
