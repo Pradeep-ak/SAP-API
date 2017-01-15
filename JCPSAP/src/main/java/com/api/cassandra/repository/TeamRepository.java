@@ -11,6 +11,6 @@ public interface TeamRepository extends CassandraRepository<Team> {
 	@Query("SELECT * FROM team")
     Iterable<Team> findAll();
 	
-	@Query("SELECT * FROM team where email=?0")
-	public Team findByName(String email);
+	@Query("SELECT * FROM team where id=?0")
+	public Team findByName(String id);
 }
