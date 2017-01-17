@@ -1,4 +1,4 @@
-package com.api.cassandra.bean;
+package com.api.cassandra.entity;
 
 import java.util.Date;
 

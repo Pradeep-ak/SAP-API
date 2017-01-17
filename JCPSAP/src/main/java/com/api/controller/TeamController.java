@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.api.CassandraConfig;
-import com.api.cassandra.bean.Team;
+import com.api.cassandra.entity.Team;
 import com.api.cassandra.repository.TeamRepository;
 
 @Controller
