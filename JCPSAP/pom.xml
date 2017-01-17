@@ -13,7 +13,7 @@
 		<version>1.4.0.RELEASE</version>
 	</parent>
 	<properties>
-		<start-class>com.api.Application</start-class>
+		<start-class>com.api.config.Application</start-class>
 	</properties>
 	<dependencies>
 <!-- Get the dependencies of a standalone application -->
@@ -23,17 +23,10 @@
 		</dependency>	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		
 		<!-- Get the dependencies of a web application -->
 		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> <exclusions> <exclusion> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-tomcat</artifactId> </exclusion> </exclusions> </dependency> -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-cassandra</artifactId>
@@ -43,18 +36,13 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.netty</groupId>
-			<artifactId>netty-all</artifactId>
-			<version>4.0.9.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>com.datastax.cassandra</groupId>
 			<artifactId>cassandra-driver-core</artifactId>
 		</dependency>
 	</dependencies>
 
 	<build>
-	<finalName>api</finalName>
+	<finalName>selfhelp</finalName>
 	<!-- Get the dependencies of a standalone application -->
 	<plugins>
 		<plugin>
@@ -64,6 +52,10 @@
 				<source>1.8</source>
 				<target>1.8</target>
 			</configuration>
+		</plugin>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
 		</plugin>
 	</plugins>
 	</build>

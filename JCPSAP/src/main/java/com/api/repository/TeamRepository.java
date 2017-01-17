@@ -1,8 +1,8 @@
-package com.api.cassandra.repository;
+package com.api.repository;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.data.cassandra.repository.Query;
 
-import com.api.cassandra.entity.Team;
+import com.api.entity.Team;
 
 public interface TeamRepository extends CassandraRepository<Team> {
 	@Query("SELECT * FROM team WHERE first_name=?0 LIMIT ?1")

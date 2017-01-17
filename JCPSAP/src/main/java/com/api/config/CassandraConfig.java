@@ -1,4 +1,4 @@
-package com.api;
+package com.api.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +19,8 @@ import org.springframework.data.cassandra.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
-@PropertySource(value = {"classpath:cassandra.properties"})
-@EnableCassandraRepositories(basePackages = {"com.api.cassandra"})
+@PropertySource(value = {"classpath:application.properties"})
+@EnableCassandraRepositories(basePackages = {"com.api"})
 public class CassandraConfig {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CassandraConfig.class);
